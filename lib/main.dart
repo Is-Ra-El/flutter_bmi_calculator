@@ -1,6 +1,4 @@
 
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'dart:math';
 // import 'package:flutter/rendering.dart';
@@ -52,7 +50,18 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
 
     setState(() {
       result = "Your Body Mass Index  is: $bmi kg/m2";
+
+      if(bmi <18.5){
+        bmicategory = 'Underweight';
+      }else if(bmi < 25){
+        bmicategory = "Normal Weight";
+      }else if(bmi < 30){
+        bmicategory = "OverWeight";
+      }else{
+        bmicategory = "Obese";
+      }
     });
+
   }
   Widget buildInputField({
     required String label,
@@ -116,9 +125,17 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                 Text(result,
                 textAlign: TextAlign.center,
                   style: const TextStyle(
-                    fontSize: 24.0,
+                    fontSize: 20.0,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
+                  ),
+                ),
+                Text(bmicategory,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.normal,
+                    color: Colors.teal,
                   ),
                 ),
                 const SizedBox(
